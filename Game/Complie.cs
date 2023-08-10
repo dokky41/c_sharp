@@ -31,8 +31,10 @@ namespace Game
                 Console.WriteLine("Program 클래스의 정보");
             }
 
-            // static을 사용하는 이유 : 인스턴스 생성 없이 사용 가능하기 때문에
-            // 프로그램 내에서 공통으로 사용되는 데이터들을 관리할 때 사용
+            // static을 사용하는 이유 : 
+            // Main 메소드는 프로그램의 진입점(Entry point)이기에
+            // 클래스 선언 없이 접근 할수 있어야 한다
+
             // static함수는 정적 data영역
             static void Main(string[] args)
             {
