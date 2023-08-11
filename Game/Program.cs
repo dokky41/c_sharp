@@ -1,157 +1,108 @@
-﻿namespace Game
+﻿using System.Data;
+
+namespace Game
 {
-    public class Function
+
+    public class Cat
     {
-        #region 매겨변수 한정자
+        private int age;
 
-        // ref : 호출되는 함수 내에서 매개 변수로 사용되는 변수의 값을
-        //       영구적으로 변경하는 키워드입니다.
-
-        public void GetData(ref int x, ref int y)
+        // 프로퍼티 (getter와 setter를 따로 구현하지 않아도 됨)
+        public int Age
         {
-            x = 100;
-            y = 200;
+            get
+            {
+                return age;
+            }
+            set
+            {
+                if(value >= 10)
+                {
+                    age = 10;
+                }
+                else
+                {
+                    age = value;
+                }
+            }
         }
 
-        // out 키워드는 함수 내에서 초기화가 이루어져야 합니다.
-        //
-        public void RayCast(out int damage)
-        {
-            damage = 100;
-        }
-
-        // in 키워드는 인수가 참조로 전달되지만, 인수의 내용은 수정되지 않습니다.
-        // 읽기전용
-        public void Information(in int data)
-        {
-            // data = 100; error
-            Console.WriteLine(data);
-        }
-
-        #endregion
-
-        #region 선택적 매개 변수
-        // 함수를 선언 및 정의 할때 사용자가 미리 기본값을
-        // 지정하는 매개 변수입니다.
-        
-        public void Default(int x = 10)
-        {
-            Console.WriteLine("x의 값 : "+ x);
-        }
-
-
-        #endregion
-
-        #region 명명된 매개 변수
-        // 호출된 함수의 각 인수에 대한 매개 변수를 매개 변수의
-        // 이름으로 지정할 수 있습니다.
-        public void SetData(string name, char grade, int health)
-        {
-            Console.WriteLine("name 변수 : " + name);
-            Console.WriteLine("grade 변수 : " + grade);
-            Console.WriteLine("health 변수 : " + health);
-        }
-
-        #endregion
     }
 
-    public class EventManager
-    {
-        public void Add(int x , int y)
-        {
-            Console.WriteLine(x+y);
-        }
-
-        public void Substarct(int x, int y)
-        {
-            Console.WriteLine(x-y);
-        }
-
-        public void Multiple(int x, int y)
-        {
-            Console.WriteLine(x*y);
-        }
-
-        public void Divide(int x, int y)
-        {
-            Console.WriteLine(x/y);
-        }
-    }
-
+    
     internal class Program 
     {
-
-        delegate void Calculator(int x, int y); //전역으로 선언해야함
-
-       
         static void Main(string[] args) 
         {
-           
-            #region 매겨변수 한정자
+            #region 박싱과 언박싱
+            // // 박싱 : 값 타입의 객체를 참조 타입으로 변환하는 작업입니다.
+            // int data = 100;
+            // 
+            // // 박싱은 암묵적으로 형 변환이 발생합니다.
+            // object obj = data; // 참조 타입에 값 타입을 저장 boxing
+            // Console.WriteLine("obj : "+obj);
+            // 
+            // // 언박싱 : 참조 타입을 값 타입으로 변환하는 작업입니다.
+            // // 언박싱은 명시적으로 형 변환이 발생합니다.
+            // int x = (int)obj;
+            // Console.WriteLine("x : " + x);
 
-            //Function f = new Function();
+            //object[] array = new object[5];
             //
-            //int x = 10;
-            //int y = 20;
-            //int z;
+            //array[0] = 10;  //박싱이 일어남
+            //array[1] = 6.5f;
+            //array[2] = 'A';
+            //array[3] = true;
+            //array[4] = "kim";
             //
-            //// ref 키워드는 변수를 초기화해주어야 합니다.
-            //f.GetData(ref x,ref y);
-            //
-            //// out 키워드는 변수를 초기화해주지 않아도 됩니다.
-            //f.RayCast(out z);
-            //
-            //f.Information(z);
-            //
-            //Console.WriteLine("x의 값 : " + x);
-            //Console.WriteLine("y의 값 : " + y);
-            //Console.WriteLine("z의 값 : " + z);
-
-            #endregion
-
-            #region 범위 기반 반복문
-
-            //int [] array = new int[5] { 1,2,3,4,5 };  
-            //
-            //foreach(var element in array)
+            //foreach (object element in array)
             //{
             //    Console.WriteLine(element);
             //}
 
-            #endregion
-
-            #region 명명된 매개 변수 및 선택적 매개 변수
-            //Function function = new Function();
-            //function.SetData(health : 10, name: "James" , grade : 'A');
-            //function.Default();
-            #endregion
-
-            #region 델리게이트
-            // 델리게이트 목록에 실행할 함수들을 등록
-            // 해놓으면 이 델리게이트가 등록된 함수를 
-            // 연쇄적으로 대신 실행시킬 수 있는 기능입니다.
-            //Calculator calculator;
-            //
-            //EventManager eventManager = new EventManager();
-            //
-            //calculator = eventManager.Add;   
-            //calculator += eventManager.Substarct;
-            //calculator += eventManager.Multiple;
-            //calculator += eventManager.Divide;
-            //
-            //calculator -= eventManager.Multiple;
-            //calculator -= eventManager.Divide;
-            //
-            //calculator(5, 5);
-
+            // 모든 자료형들을 저장할 수 있는 동적 배열 (vector 유사)
+            // 제네릭을 통해 일반화시켜줌
+            // ArrayList
 
             #endregion
+
+            #region 프로퍼티
+
+            //Cat cat = new Cat();
+            //cat.Age = 20;
+            //
+            //Console.WriteLine("cat의 나이 : " + cat.Age);
+
+            #endregion
+
+            #region 가비지 컬렉터
+            // 프로그램이 동적으로 할당했던 메모리 영역 중에서
+            // 더 이상 참조되지 않은 메모리를 자동으로 해제하는 기능입니다.
+
+            if (true)
+            {
+                int[] ints = new int[2];
+                
+            }
+                
+                
+            #endregion
+
 
         }
-
     }
 
 }
+
+// object는 모든 자료형들의 최상위 자료형 (참조타입)
+// 값타입과 참조타입 모두의 최상위
+
+// 박싱과 언박싱
+// 값 타입 -> 참조타입
+// 참조 타입 -> 값타입
+
+
+
 
 
 
