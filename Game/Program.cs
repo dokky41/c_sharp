@@ -1,116 +1,12 @@
-﻿using System.Collections;
+﻿using Game.Open_Closed;
+using Game.Single_Responsibility;
+using Game.Interface_Segregation;
+using System.Collections;
 using System.Data;
+using Game.Dependency_Inversion;
 
 namespace Game
 {
-    public class Dog
-    {
-        private string name;
-        private int age;
-
-        public Dog()
-        {
-            age = 1;
-            name = "Alistar";
-        }
-
-        public void Eat()
-        {
-            Console.WriteLine("Eat");
-        }
-
-        public void Walk()
-        {
-            Console.WriteLine("Walk");
-        }
-
-        public string Representation()
-        {
-            return $"Name : {name}, Age : {age}";
-        }
-    }
-
-    class Information
-    {
-        public void Show(Dog dog)
-        {
-            Console.WriteLine(dog.Representation());
-        }
-
-    }
-
-    public abstract class TerranUnit
-    {
-        public abstract void Speak();
-    }
-
-    public class Marin : TerranUnit
-    {
-        public override void Speak()
-        {
-            Console.WriteLine("마린 생성");
-        }
-    }
-
-    public class Medic : TerranUnit
-    {
-        public override void Speak()
-        {
-            Console.WriteLine("메딕 생성");
-        }
-    }
-
-    public class Firebat : TerranUnit
-    {
-        public override void Speak()
-        {
-            Console.WriteLine("파이어벳 생성");
-        }
-    }
-
-    public class Ghost : TerranUnit
-    {
-        public override void Speak()
-        {
-            Console.WriteLine("고스트 생성");
-        }
-    }
-
-    class UnitManager
-    {
-        public void Create(TerranUnit Unit)
-        {
-            Unit.Speak();
-        }
-    }
-
-    public interface IGun
-    {
-        // 발사
-       
-
-        // 장전
-    }
-    public interface IScope
-    {
-        // 줌
-
-    }
-
-    public class Pistol : IGun
-    {
-
-    }
-
-    public class SniferRifle : IGun,IScope
-    {
-
-    }
-
-    public class Rifle : IGun
-    {
-
-    }
 
     internal class Program 
     {
@@ -119,7 +15,6 @@ namespace Game
 
             #region 단일 책임 원칙
             // Module , class , function은 하나의 책임만 가져야 합니다.
-
             // Dog dog = new Dog();
             // 
             // Information info = new Information();    
@@ -140,11 +35,42 @@ namespace Game
             #endregion
 
             #region 인터페이스 분리 원칙
-                // 클라이언트는 자신이 사용하지 않는 함수에 대해
-                // 영향을 받지 않아야 하며, 인터페이스를 구체적이고 작은 단위의 
-                // 역할로 인터페이스를 분리시켜 클라이언트가 꼭 필요한 함수만
-                // 이용할 수 있도록 해야합니다.
+            // 클라이언트는 자신이 사용하지 않는 함수에 대해
+            // 영향을 받지 않아야 하며, 인터페이스를 구체적이고 작은 단위의 
+            // 역할로 인터페이스를 분리시켜 클라이언트가 꼭 필요한 함수만
+            // 이용할 수 있도록 해야합니다.
 
+            //Pistol pistol = new Pistol();
+            //SniferRifle sniferRifle = new SniferRifle();     
+            //Rifle Rifle = new Rifle();
+            //
+            //pistol.reload();
+            //pistol.Shot();
+            //Console.WriteLine();
+            //
+            //sniferRifle.reload();
+            //sniferRifle.Shot();
+            //sniferRifle.Zoom(50);
+            //Console.WriteLine();
+            //
+            //Rifle.Shot();
+            //Rifle.reload();
+
+
+
+            #endregion
+
+            #region 의존관계 역전 원칙
+            // 의존 관계를 맺을 때 자신보다 변화하기 쉬운 것보다는 
+            // 변화하지 않는 것에 의존해야 합니다.
+
+            //ItemManager itemManager = new ItemManager();
+            //
+            //itemManager.AddItem(new Potion());
+            //itemManager.AddItem(new Gem());
+            //itemManager.AddItem(new Stone());
+            //
+            //itemManager.UseAllItem();
 
             #endregion
 
