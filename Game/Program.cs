@@ -4,6 +4,8 @@ using Game.Interface_Segregation;
 using System.Collections;
 using System.Data;
 using Game.Dependency_Inversion;
+using Game.Liskov_Substitution;
+using Game.virtual_function;
 
 namespace Game
 {
@@ -71,6 +73,56 @@ namespace Game
             //itemManager.AddItem(new Stone());
             //
             //itemManager.UseAllItem();
+
+            #endregion
+
+            #region 리스코프 치환 원칙
+            // 상위 클래스와 하위 클래스가 있을 때 상위 클래스 객체를
+            // 호출하는 동작에서 하위클래스 객체가 상위 클래스 객체를
+            // 완전하게 대체할 수 있어야 합니다.
+
+            //Rectangle rect = new Rectangle();
+            //rect.SetWidth(10);
+            //rect.SetHeight(20);
+            //Console.WriteLine("직사격형 넓이 : " + rect.GetArea());
+            //
+            //Square square = new Square();
+            //square.SetSide(30);
+            //Console.WriteLine("정사격형 넓이 : " + square.GetArea());
+
+            #endregion
+
+            #region 가상 함수
+            int num = 5;
+
+            Unit unit;
+
+            ConsoleKeyInfo consoleKey;
+
+            while(num>0)
+            {
+                consoleKey = Console.ReadKey(true);
+            
+                switch (consoleKey.Key)
+                {
+                    case ConsoleKey.D1:
+                        unit = new Vulture();
+                        unit.Created();
+                        num--; break;
+
+                    case ConsoleKey.D2:
+                        unit = new SiegeTank();
+                        unit.Created();
+                        num--; break;
+
+                    case ConsoleKey.D3: 
+                        unit = new Goliath();
+                        unit.Created();
+                        num--; break;
+                }
+           
+            }
+
 
             #endregion
 
