@@ -12,7 +12,10 @@ namespace Game.virtual_function
         protected int hp;
         protected int attack;
 
-        public virtual void Created() { }
+        public virtual void Created() 
+        {
+            Console.WriteLine("유닛 생성");
+        }
     }
 
     public class Vulture : Unit
