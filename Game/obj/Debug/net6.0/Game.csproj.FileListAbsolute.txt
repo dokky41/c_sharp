@@ -3,7 +3,6 @@ F:\c_sharp\Game\bin\Debug\net6.0\Game.deps.json
 F:\c_sharp\Game\bin\Debug\net6.0\Game.runtimeconfig.json
 F:\c_sharp\Game\bin\Debug\net6.0\Game.dll
 F:\c_sharp\Game\bin\Debug\net6.0\Game.pdb
-F:\c_sharp\Game\obj\Debug\net6.0\Game.csproj.AssemblyReference.cache
 F:\c_sharp\Game\obj\Debug\net6.0\Game.GeneratedMSBuildEditorConfig.editorconfig
 F:\c_sharp\Game\obj\Debug\net6.0\Game.AssemblyInfoInputs.cache
 F:\c_sharp\Game\obj\Debug\net6.0\Game.AssemblyInfo.cs
