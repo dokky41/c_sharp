@@ -10,6 +10,8 @@ namespace Game
     {
         uint lineX;
         private Item[] items;
+        int select;
+
 
         public Inventory(uint x, uint y)
         {
@@ -34,6 +36,40 @@ namespace Game
             }
         }
 
+        public void RemoveItem()
+        {
+            if (items[select] != null)
+            {
+                items[select] = null;
+            }
+        }
+
+        
+            
+         
+
+        public void SelectNumber(Cursor cursor)
+        {
+            int resultX = cursor.X / 2;
+            int resultY = cursor.Y * (int)lineX;
+
+            select = resultX + resultY;
+
+        }
+
+
+        public void ShowItem()
+        {
+            if (items[select] != null)
+            {
+                items[select].Information();  
+            }
+
+        }
+
+
+       
+
         public void Rendere()
         {
             for (int i = 0; i < items.Length; i++)
@@ -49,15 +85,15 @@ namespace Game
                 }
                 else if (items[i] != null)
                 {
-                    Console.Write("■");
+                    Console.Write("■");   
                 }
+
+                
+                
             }
         }
 
-        public void Select()
-        {
-
-        }
+       
 
 
     }

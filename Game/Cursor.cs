@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    public delegate void Function();
     internal class Cursor
     {
-        int x;
-        int y;
+        private int x;
+        private int y;
+
+        public Function function;
 
         ConsoleKeyInfo consoleKey;
 
@@ -19,11 +22,24 @@ namespace Game
             y = 0;
         }
 
+        public int X
+        {
+            get { return x; }
+        }
+
+        public int Y
+        {
+            get { return y; }
+        }
+
+
+
         public void Input()
         {
             Console.SetCursorPosition(x, y);
 
             consoleKey = Console.ReadKey();
+
 
             switch (consoleKey.Key)
             {
@@ -51,6 +67,11 @@ namespace Game
                         y++;
                     }
                     break;
+                case ConsoleKey.Spacebar:
+                    function();
+                    break;
+
+
             }
         }
 
